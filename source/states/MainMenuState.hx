@@ -16,13 +16,12 @@ class MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '1.0-prerelease'; // This is also used for Discord RPC
 	public static var curSelected:Int = 0;
-	public static var curColumn:MainMenuColumn = LEFT;
+	public static var curColumn:MainMenuColumn = CENTER;
 	var allowMouse:Bool = true; //Turn this off to block mouse movement in menus
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	var leftItem:FlxSprite;
 	var rightItem:FlxSprite;
-
 
 	var optionShit:Array<String> = [
 		'play',
@@ -62,6 +61,7 @@ class MainMenuState extends MusicBeatState
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
 
+
 		magenta = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/space'));
 		magenta.scrollFactor.set(0, yScroll);
 		magenta.updateHitbox();
@@ -84,11 +84,6 @@ class MainMenuState extends MusicBeatState
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
-
-		var scale:Float = 1;
-		/*if(optionShit.length > 6) {
-			scale = 6 / optionShit.length;
-		}*/
 
 		for (num => option in optionShit)
 		{
@@ -142,6 +137,7 @@ class MainMenuState extends MusicBeatState
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
 			menuItem.scrollFactor.set(0, scr);
+			menuItem.antialiasing = ClientPrefs.globalAntialiasing;
 			menuItem.updateHitbox();
 			
 			var menuChar = new FlxSprite().loadGraphic(Paths.image('mainmenu/' + optionShit[i]));
@@ -155,6 +151,7 @@ class MainMenuState extends MusicBeatState
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
 			menuChar.scrollFactor.set(0, scr);
+			menuChar.antialiasing = ClientPrefs.globalAntialiasing;
 			menuChar.updateHitbox();
 	}
 
