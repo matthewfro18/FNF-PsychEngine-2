@@ -16,19 +16,18 @@ class MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '1.0-prerelease'; // This is also used for Discord RPC
 	public static var curSelected:Int = 0;
-	public static var curColumn:MainMenuColumn = CENTER;
+	public static var curColumn:MainMenuColumn = LEFT;
 	var allowMouse:Bool = true; //Turn this off to block mouse movement in menus
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	var leftItem:FlxSprite;
 	var rightItem:FlxSprite;
 
-	//Centered/Text options
+
 	var optionShit:Array<String> = [
-		'story_mode',
-		'freeplay',
-		#if MODS_ALLOWED 'mods', #end
-		'credits'
+		'play',
+		'extras',
+		'options'
 	];
 
 	var leftOption:String = #if ACHIEVEMENTS_ALLOWED 'achievements' #else null #end;
@@ -63,15 +62,25 @@ class MainMenuState extends MusicBeatState
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
 
-		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
-		magenta.antialiasing = ClientPrefs.data.antialiasing;
+		magenta = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/space'));
 		magenta.scrollFactor.set(0, yScroll);
-		magenta.setGraphicSize(Std.int(magenta.width * 1.175));
 		magenta.updateHitbox();
 		magenta.screenCenter();
-		magenta.visible = false;
-		magenta.color = 0xFFfd719b;
+		magenta.antialiasing = ClientPrefs.globalAntialiasing;
 		add(magenta);
+
+		var magenta2 = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/thing'));
+		magenta2.scrollFactor.set(0, yScroll);
+		magenta2.updateHitbox();
+		magenta2.screenCenter();
+		magenta2.visible = false;
+		magenta2.antialiasing = ClientPrefs.globalAntialiasing;
+		magenta2.color = 0xFFfd719b;
+		add(magenta2);
+
+		// magenta.scrollFactor.set();
+
+		// magenta2.scrollFactor.set();
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
@@ -119,17 +128,31 @@ class MainMenuState extends MusicBeatState
 
 	function createMenuItem(name:String, x:Float, y:Float):FlxSprite
 	{
-		var menuItem:FlxSprite = new FlxSprite(x, y);
-		menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_$name');
-		menuItem.animation.addByPrefix('idle', '$name idle', 24, true);
-		menuItem.animation.addByPrefix('selected', '$name selected', 24, true);
-		menuItem.animation.play('idle');
-		menuItem.updateHitbox();
-		
-		menuItem.antialiasing = ClientPrefs.data.antialiasing;
-		menuItem.scrollFactor.set();
-		menuItems.add(menuItem);
-		return menuItem;
+			var menuItem = new FlxSprite().loadGraphic(Paths.image('mainmenu/' + optionShit[i]));
+			menuItem.scale.x = scale;
+			menuItem.scale.y = scale;
+			menuItem.ID = i;
+			menuItem.screenCenter(X);
+			menuItems.add(menuItem);
+			var scr:Float = (optionShit.length - 4) * 0.135;
+			if(optionShit.length < 6) scr = 0;
+			menuItem.scrollFactor.set(0, scr);
+			menuItem.antialiasing = ClientPrefs.globalAntialiasing;
+			menuItem.updateHitbox();
+			
+			var menuChar = new FlxSprite().loadGraphic(Paths.image('mainmenu/' + optionShit[i]));
+			menuChar.scale.x = scale;
+			menuChar.scale.y = scale;
+			menuChar.x = 238;
+			menuChar.y = 199;
+			menuChar.ID = i;
+			menuChar.screenCenter(X);
+			menuItems.add(menuChar);
+			var scr:Float = (optionShit.length - 4) * 0.135;
+			if(optionShit.length < 6) scr = 0;
+			menuChar.scrollFactor.set(0, scr);
+			menuChar.antialiasing = ClientPrefs.globalAntialiasing;
+			menuChar.updateHitbox();
 	}
 
 	var selectedSomethin:Bool = false;
@@ -286,32 +309,12 @@ class MainMenuState extends MusicBeatState
 					{
 						switch (option)
 						{
-							case 'story_mode':
-								MusicBeatState.switchState(new StoryMenuState());
-							case 'freeplay':
-								MusicBeatState.switchState(new FreeplayState());
-
-							#if MODS_ALLOWED
-							case 'mods':
-								MusicBeatState.switchState(new ModsMenuState());
-							#end
-
-							#if ACHIEVEMENTS_ALLOWED
-							case 'achievements':
-								MusicBeatState.switchState(new AchievementsMenuState());
-							#end
-
-							case 'credits':
-								MusicBeatState.switchState(new CreditsState());
+							case 'play':
+			        				MusicBeatState.switchState(new PlayMenuState());
+							case 'extras':
+			        				MusicBeatState.switchState(new ExtrasState());
 							case 'options':
-								MusicBeatState.switchState(new OptionsState());
-								OptionsState.onPlayState = false;
-								if (PlayState.SONG != null)
-								{
-									PlayState.SONG.arrowSkin = null;
-									PlayState.SONG.splashSkin = null;
-									PlayState.stageUI = 'normal';
-								}
+			        				LoadingState.loadAndSwitchState(new options.OptionsState());
 						}
 					});
 					
