@@ -68,14 +68,11 @@ class ExtrasState extends MusicBeatState
 		magenta.screenCenter();
 		add(magenta);
 
-		var magenta2 = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/uhhh'));
+		var magenta2 = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/thing'));
 		magenta2.scrollFactor.set(0, yScroll);
 		magenta2.updateHitbox();
 		magenta2.screenCenter();
-		magenta2.visible = false;
-		magenta2.color = 0xFFfd719b;
 		add(magenta2);
-
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
