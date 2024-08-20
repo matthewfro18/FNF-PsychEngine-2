@@ -16,7 +16,7 @@ class MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '1.0-prerelease'; // This is also used for Discord RPC
 	public static var curSelected:Int = 0;
-	public static var curColumn:MainMenuColumn = LEFT;
+	public static var curColumn:MainMenuColumn = CENTER;
 	var allowMouse:Bool = true; //Turn this off to block mouse movement in menus
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -66,12 +66,16 @@ class MainMenuState extends MusicBeatState
 		magenta.scrollFactor.set(0, yScroll);
 		magenta.updateHitbox();
 		magenta.screenCenter();
+		magenta.antialiasing = ClientPrefs.globalAntialiasing;
 		add(magenta);
 
 		var magenta2 = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/thing'));
 		magenta2.scrollFactor.set(0, yScroll);
 		magenta2.updateHitbox();
 		magenta2.screenCenter();
+		magenta2.visible = false;
+		magenta2.antialiasing = ClientPrefs.globalAntialiasing;
+		magenta2.color = 0xFFfd719b;
 		add(magenta2);
 
 		// magenta.scrollFactor.set();
@@ -80,11 +84,6 @@ class MainMenuState extends MusicBeatState
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
-
-		var scale:Float = 1;
-		/*if(optionShit.length > 6) {
-			scale = 6 / optionShit.length;
-		}*/
 
 		for (num => option in optionShit)
 		{
