@@ -85,6 +85,11 @@ class MainMenuState extends MusicBeatState
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
+		var scale:Float = 1;
+		/*if(optionShit.length > 6) {
+			scale = 6 / optionShit.length;
+		}*/
+
 		for (num => option in optionShit)
 		{
 			var item:FlxSprite = createMenuItem(option, 0, (num * 140) + 90);
@@ -137,7 +142,6 @@ class MainMenuState extends MusicBeatState
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
 			menuItem.scrollFactor.set(0, scr);
-			menuItem.antialiasing = ClientPrefs.globalAntialiasing;
 			menuItem.updateHitbox();
 			
 			var menuChar = new FlxSprite().loadGraphic(Paths.image('mainmenu/' + optionShit[i]));
@@ -151,7 +155,6 @@ class MainMenuState extends MusicBeatState
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
 			menuChar.scrollFactor.set(0, scr);
-			menuChar.antialiasing = ClientPrefs.globalAntialiasing;
 			menuChar.updateHitbox();
 	}
 
