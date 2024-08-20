@@ -66,16 +66,12 @@ class MainMenuState extends MusicBeatState
 		magenta.scrollFactor.set(0, yScroll);
 		magenta.updateHitbox();
 		magenta.screenCenter();
-		magenta.antialiasing = ClientPrefs.globalAntialiasing;
 		add(magenta);
 
 		var magenta2 = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/thing'));
 		magenta2.scrollFactor.set(0, yScroll);
 		magenta2.updateHitbox();
 		magenta2.screenCenter();
-		magenta2.visible = false;
-		magenta2.antialiasing = ClientPrefs.globalAntialiasing;
-		magenta2.color = 0xFFfd719b;
 		add(magenta2);
 
 		// magenta.scrollFactor.set();
