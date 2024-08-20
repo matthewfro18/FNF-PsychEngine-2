@@ -1021,9 +1021,6 @@ class PlayState extends MusicBeatState
 						}});
 					}
 				}
-
-				}
-
 				if(!skipArrowStartTween)
 				{
 					notes.forEachAlive(function(note:Note) {
