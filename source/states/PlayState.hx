@@ -194,7 +194,7 @@ class PlayState extends MusicBeatState
 
 	public var creditsPopup:CreditsPopUp;
 
-	public static var isGreetingsCutscene:Bool
+	public static var isGreetingsCutscene:Bool;
 
 	public var songScore:Int = 0;
 	public var songHits:Int = 0;
