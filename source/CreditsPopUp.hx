@@ -12,7 +12,6 @@ import flixel.math.FlxMath;
 typedef SongHeading = {
 	var path:String;
 	var antiAliasing:Bool;
-	var animation:Animation;
 	var iconOffset:Float;
 }
 class CreditsPopUp extends FlxSpriteGroup
