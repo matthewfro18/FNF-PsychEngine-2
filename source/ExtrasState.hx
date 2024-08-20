@@ -25,8 +25,8 @@ class ExtrasState extends MusicBeatState
 
 	//Centered/Text options
 	var optionShit:Array<String> = [
-		#if MODS_ALLOWED 'mods', #end
-		#if DISCORD_ALLOWED 'discord', #end
+	        'mods',
+	        'discord',
 		'credits'
 	];
 
