@@ -16,7 +16,7 @@ class MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '1.0-prerelease'; // This is also used for Discord RPC
 	public static var curSelected:Int = 0;
-	public static var curColumn:MainMenuColumn = CENTER;
+	public static var curColumn:MainMenuColumn = LEFT;
 	var allowMouse:Bool = true; //Turn this off to block mouse movement in menus
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
