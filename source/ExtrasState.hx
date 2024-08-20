@@ -1,4 +1,4 @@
-package;
+package states;
 
 import flixel.FlxObject;
 import flixel.effects.FlxFlicker;
@@ -68,11 +68,12 @@ class ExtrasState extends MusicBeatState
 		magenta.screenCenter();
 		add(magenta);
 
-		var magenta2 = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/thing'));
+		var magenta2 = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/uhhh'));
 		magenta2.scrollFactor.set(0, yScroll);
 		magenta2.updateHitbox();
 		magenta2.screenCenter();
 		add(magenta2);
+
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
@@ -124,7 +125,7 @@ class ExtrasState extends MusicBeatState
 
 	function createMenuItem(name:String, x:Float, y:Float):FlxSprite
 	{
-			var menuItem = new FlxSprite().loadGraphic(Paths.image('mainmenu/' + optionShit[i]));
+			var menuItem = new FlxSprite(237, 199).loadGraphic(Paths.image('mainmenu/' + optionShit[i]));
 			menuItem.scale.x = scale;
 			menuItem.scale.y = scale;
 			menuItem.ID = i;
@@ -139,8 +140,6 @@ class ExtrasState extends MusicBeatState
 			var menuChar = new FlxSprite(238, 199).loadGraphic(Paths.image('backgrounds/' + optionShit[i]));
 			menuChar.scale.x = scale;
 			menuChar.scale.y = scale;
-			menuChar.x = 238;
-			menuChar.y = 199;
 			menuChar.ID = i;
 			menuChar.screenCenter(X);
 			menuItems.add(menuChar);
