@@ -1,6 +1,7 @@
 package states;
 
 import flixel.FlxObject;
+import flixel.FlxSprite;
 import flixel.effects.FlxFlicker;
 import lime.app.Application;
 import states.editors.MasterEditorMenu;
@@ -22,6 +23,9 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	var leftItem:FlxSprite;
 	var rightItem:FlxSprite;
+	var i:Int = 0;
+	var X:Int = 0;
+    var scale:Float = 1;
 
 	var optionShit:Array<String> = [
 		'play',
@@ -80,8 +84,7 @@ class MainMenuState extends MusicBeatState
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
-
-		var scale:Float = 1;
+	
 		/*if(optionShit.length > 6) {
 			scale = 6 / optionShit.length;
 		}*/
