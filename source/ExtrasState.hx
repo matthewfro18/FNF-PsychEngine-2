@@ -27,7 +27,7 @@ class ExtrasState extends MusicBeatState
 	var optionShit:Array<String> = [
 	        'mods',
 	        'discord',
-		'credits'
+		     'credits'
 	];
 
 	var leftOption:String = #if ACHIEVEMENTS_ALLOWED 'achievements' #else null #end;
@@ -302,7 +302,6 @@ class ExtrasState extends MusicBeatState
 					{
 						switch (option)
 						{
-							#if MODS_ALLOWED
 							case 'mods':
 							case 'credits':
 								MusicBeatState.switchState(new CreditsState());
