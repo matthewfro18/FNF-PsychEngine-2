@@ -299,8 +299,8 @@ class ExtrasState extends MusicBeatState
 					{
 						switch (option)
 						{
-							#if MODS_ALLOWED
 							case 'mods':
+								MusicBeatState.switchState(new ModsMenuState());
 							case 'credits':
 								MusicBeatState.switchState(new CreditsState());
 							case 'options':
