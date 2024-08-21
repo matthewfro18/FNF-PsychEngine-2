@@ -1,4 +1,4 @@
-package states;
+package;
 
 import flixel.FlxObject;
 import flixel.effects.FlxFlicker;
@@ -25,9 +25,9 @@ class ExtrasState extends MusicBeatState
 
 	//Centered/Text options
 	var optionShit:Array<String> = [
-	        'mods',
-	        'discord',
-		     'credits'
+		#if MODS_ALLOWED 'mods', #end
+		#if DISCORD_ALLOWED 'discord', #end
+		'credits'
 	];
 
 	var leftOption:String = #if ACHIEVEMENTS_ALLOWED 'achievements' #else null #end;
@@ -72,15 +72,12 @@ class ExtrasState extends MusicBeatState
 		magenta2.scrollFactor.set(0, yScroll);
 		magenta2.updateHitbox();
 		magenta2.screenCenter();
+		magenta2.visible = false;
+		magenta2.color = 0xFFfd719b;
 		add(magenta2);
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
-
-		var scale:Float = 1;
-		/*if(optionShit.length > 6) {
-			scale = 6 / optionShit.length;
-		}*/
 
 		for (num => option in optionShit)
 		{
@@ -302,6 +299,7 @@ class ExtrasState extends MusicBeatState
 					{
 						switch (option)
 						{
+							#if MODS_ALLOWED
 							case 'mods':
 							case 'credits':
 								MusicBeatState.switchState(new CreditsState());
