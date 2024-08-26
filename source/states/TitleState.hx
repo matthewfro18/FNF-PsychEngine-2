@@ -6,7 +6,7 @@ import flixel.input.keyboard.FlxKey;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.graphics.frames.FlxFrame;
 import flixel.group.FlxGroup;
-import flixel.input.gamepad.FlxGamepad;
+import flixel.input.gamepad.FlxGamepad
 import flixel.addons.display.FlxBackdrop;
 import haxe.Json;
 
