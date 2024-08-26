@@ -1,9 +1,12 @@
-package states;
+package;
 
 import flixel.FlxObject;
 import flixel.effects.FlxFlicker;
+import flixel.addons.display.FlxBackdrop;
 import lime.app.Application;
 import states.editors.MasterEditorMenu;
+import states.ModsMenuState;
+import states.MainMenuState;
 import options.OptionsState;
 
 enum MainMenuColumn {
@@ -25,15 +28,16 @@ class ExtrasState extends MusicBeatState
 
 	//Centered/Text options
 	var optionShit:Array<String> = [
-	        'mods',
-	        'discord',
-		     'credits'
+		#if MODS_ALLOWED 'mods', #end
+		#if DISCORD_ALLOWED 'discord', #end
+		'credits'
 	];
 
 	var leftOption:String = #if ACHIEVEMENTS_ALLOWED 'achievements' #else null #end;
 	var rightOption:String = 'options';
 
 	var magenta:FlxSprite;
+	var bgMenu:FlxBackdrop;
 	var camFollow:FlxObject;
 
 	override function create()
@@ -59,6 +63,10 @@ class ExtrasState extends MusicBeatState
 		bg.screenCenter();
 		add(bg);
 
+		bgMenu = new FlxBackdrop(Paths.image('mainmenu/grid'), 10, 0, true, true);
+        bgMenu.velocity.set(70, 70); //thats it :D- snake
+		add(bgMenu);
+
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
 
@@ -72,15 +80,12 @@ class ExtrasState extends MusicBeatState
 		magenta2.scrollFactor.set(0, yScroll);
 		magenta2.updateHitbox();
 		magenta2.screenCenter();
+		magenta2.visible = false;
+		magenta2.color = 0xFFfd719b;
 		add(magenta2);
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
-
-		var scale:Float = 1;
-		/*if(optionShit.length > 6) {
-			scale = 6 / optionShit.length;
-		}*/
 
 		for (num => option in optionShit)
 		{
@@ -125,9 +130,11 @@ class ExtrasState extends MusicBeatState
 
 	function createMenuItem(name:String, x:Float, y:Float):FlxSprite
 	{
-			var menuItem = new FlxSprite(237, 199).loadGraphic(Paths.image('mainmenu/' + optionShit[i]));
+			var menuItem = new FlxSprite().loadGraphic(Paths.image('mainmenu/' + optionShit[i]));
 			menuItem.scale.x = scale;
 			menuItem.scale.y = scale;
+			menuItem.x = 237;
+			menuItem.y = i;
 			menuItem.ID = i;
 			menuItem.screenCenter(X);
 			menuItems.add(menuItem);
@@ -137,9 +144,11 @@ class ExtrasState extends MusicBeatState
 
 			menuItem.updateHitbox();
 			
-			var menuChar = new FlxSprite(238, 199).loadGraphic(Paths.image('backgrounds/' + optionShit[i]));
+			var menuChar = new FlxSprite().loadGraphic(Paths.image('backgrounds/' + optionShit[i]));
 			menuChar.scale.x = scale;
 			menuChar.scale.y = scale;
+			menuChar.x = 238;
+			menuChar.y = 199;
 			menuChar.ID = i;
 			menuChar.screenCenter(X);
 			menuItems.add(menuChar);
@@ -267,7 +276,7 @@ class ExtrasState extends MusicBeatState
 				selectedSomethin = true;
 				FlxG.mouse.visible = false;
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				MusicBeatState.switchState(new TitleState());
+				MusicBeatState.switchState(new MainMenuState());
 			}
 
 			if (controls.ACCEPT || (FlxG.mouse.justPressed && allowMouse))
@@ -302,7 +311,10 @@ class ExtrasState extends MusicBeatState
 					{
 						switch (option)
 						{
+							#if MODS_ALLOWED
 							case 'mods':
+								MusicBeatState.switchState(new ModsMenuState());
+							#end
 							case 'credits':
 								MusicBeatState.switchState(new CreditsState());
 							case 'options':
