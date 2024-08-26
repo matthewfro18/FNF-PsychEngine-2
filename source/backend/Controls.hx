@@ -22,10 +22,6 @@ class Controls
 	public var UI_DOWN_P(get, never):Bool;
 	public var UI_LEFT_P(get, never):Bool;
 	public var UI_RIGHT_P(get, never):Bool;
-	public var UI_UP(get, never):Bool;
-	public var UI_DOWN(get, never):Bool;
-	public var UI_LEFT(get, never):Bool;
-	public var UI_RIGHT(get, never):Bool;
 	public var NOTE_UP_P(get, never):Bool;
 	public var NOTE_DOWN_P(get, never):Bool;
 	public var NOTE_LEFT_P(get, never):Bool;
