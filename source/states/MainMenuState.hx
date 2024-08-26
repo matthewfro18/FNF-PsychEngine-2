@@ -126,7 +126,7 @@ class MainMenuState extends MusicBeatState
 
 	function createMenuItem(name:String, x:Float, y:Float):FlxSprite
 	{
-		var menuItem = new FlxSprite().loadGraphic(Paths.image('mainmenu/$name');
+		var menuItem = new FlxSprite().loadGraphic(Paths.image('mainmenu/$name'));
 		menuItem.scale.x = scale;
 		menuItem.scale.y = scale;
 		menuItem.screenCenter(X);
@@ -141,7 +141,7 @@ class MainMenuState extends MusicBeatState
 		menuItems.add(menuItem);
 		return menuItem;
 
-		var menuChar = new FlxSprite().loadGraphic(Paths.image('backgrounds/$name');
+		var menuChar = new FlxSprite().loadGraphic(Paths.image('backgrounds/$name'));
 		menuChar.scale.x = scale;
 		menuChar.scale.y = scale;
 		menuChar.x = 238;
