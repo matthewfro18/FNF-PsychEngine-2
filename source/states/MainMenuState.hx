@@ -35,7 +35,6 @@ class MainMenuState extends MusicBeatState
 	var rightOption:String = 'options';
 
 	var magenta:FlxSprite;
-	var bgMenu:FlxBackdrop;
 	var camFollow:FlxObject;
 
 	override function create()
@@ -68,15 +67,18 @@ class MainMenuState extends MusicBeatState
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
 
-		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
-		magenta.antialiasing = ClientPrefs.data.antialiasing;
+
+		magenta = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/space'));
 		magenta.scrollFactor.set(0, yScroll);
-		magenta.setGraphicSize(Std.int(magenta.width * 1.175));
 		magenta.updateHitbox();
 		magenta.screenCenter();
-		magenta.visible = false;
-		magenta.color = 0xFFfd719b;
 		add(magenta);
+
+		var magenta2 = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/thing'));
+		magenta2.scrollFactor.set(0, yScroll);
+		magenta2.updateHitbox();
+		magenta2.screenCenter();
+		add(magenta2);
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
@@ -124,31 +126,36 @@ class MainMenuState extends MusicBeatState
 
 	function createMenuItem(name:String, x:Float, y:Float):FlxSprite
 	{
-			var menuItem = new FlxSprite().loadGraphic(Paths.image('mainmenu/' + optionShit[i]));
-			menuItem.scale.x = scale;
-			menuItem.scale.y = scale;
-			menuItem.x = 237;
-			menuItem.y = i;
-			menuItem.ID = i;
-			menuItem.screenCenter(X);
-			menuItems.add(menuItem);
-			var scr:Float = (optionShit.length - 4) * 0.135;
-			if(optionShit.length < 6) scr = 0;
-			menuItem.scrollFactor.set(0, scr);
+		var menuItem = new FlxSprite().loadGraphic(Paths.image('mainmenu/$name');
+		menuItem.scale.x = scale;
+		menuItem.scale.y = scale;
+		menuItem.screenCenter(X);
+		menuItems.add(menuItem);
+		var scr:Float = (optionShit.length - 4) * 0.135;
+		if(optionShit.length < 6) scr = 0;
+		menuItem.scrollFactor.set(0, scr);
+		menuItem.updateHitbox();
+		
+		menuItem.antialiasing = ClientPrefs.data.antialiasing;
+		menuItem.scrollFactor.set();
+		menuItems.add(menuItem);
+		return menuItem;
 
-			menuItem.updateHitbox();
-			
-			var menuChar = new FlxSprite().loadGraphic(Paths.image('backgrounds/' + optionShit[i]));
-			menuChar.scale.x = scale;
-			menuChar.scale.y = scale;
-			menuChar.x = 238;
-			menuChar.y = 199;
-			menuChar.ID = i;
-			menuChar.screenCenter(X);
-			menuItems.add(menuChar);
-			var scr:Float = (optionShit.length - 4) * 0.135;
-			if(optionShit.length < 6) scr = 0;
-			menuChar.scrollFactor.set(0, scr);
+		var menuChar = new FlxSprite().loadGraphic(Paths.image('backgrounds/$name');
+		menuChar.scale.x = scale;
+		menuChar.scale.y = scale;
+		menuChar.x = 238;
+		menuChar.y = 199;
+		menuChar.screenCenter(X);
+		var scr:Float = (optionShit.length - 4) * 0.135;
+		if(optionShit.length < 6) scr = 0;
+		menuChar.scrollFactor.set(0, scr);
+		menuChar.updateHitbox();
+		
+		menuChar.antialiasing = ClientPrefs.data.antialiasing;
+		menuChar.scrollFactor.set();
+		menuItems.add(menuChar);
+		return menuChar;
 	}
 
 	var selectedSomethin:Bool = false;
@@ -305,10 +312,23 @@ class MainMenuState extends MusicBeatState
 					{
 						switch (option)
 						{
-							case 'play':
-								FlxG.switchState(new PlayMenuState());
-							case 'extras':
-								FlxG.switchState(new ExtrasState());
+							case 'story_mode':
+								MusicBeatState.switchState(new StoryMenuState());
+							case 'freeplay':
+								MusicBeatState.switchState(new FreeplayState());
+
+							#if MODS_ALLOWED
+							case 'mods':
+								MusicBeatState.switchState(new ModsMenuState());
+							#end
+
+							#if ACHIEVEMENTS_ALLOWED
+							case 'achievements':
+								MusicBeatState.switchState(new AchievementsMenuState());
+							#end
+
+							case 'credits':
+								MusicBeatState.switchState(new CreditsState());
 							case 'options':
 								MusicBeatState.switchState(new OptionsState());
 								OptionsState.onPlayState = false;
