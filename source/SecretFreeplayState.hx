@@ -13,7 +13,7 @@ import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxStringUtil;
 import lime.utils.Assets;
-import FreeplayState.SongMetadata;
+import states.FreeplayState.SongMetadata;
 #if desktop
 import Discord.DiscordClient;
 #end
