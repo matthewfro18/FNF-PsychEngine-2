@@ -125,16 +125,16 @@ class DaveAndBambiFreeplayState extends MusicBeatState
 
         super.update(p);
 
-        if (controls.UP_P)
+        if (Controls.UP_P)
             changeSelection(-1);
 
-        if (controls.DOWN_P)
+        if (Controls.DOWN_P)
             changeSelection(1);
 
-        if (controls.BACK)
+        if (Controls.BACK)
             FlxG.switchState(new MainMenuState());
 
-        if (controls.ACCEPT)
+        if (Controls.ACCEPT)
 		{
             switch (songs[curSelected].songName.toLowerCase()) {
                 case 'unknown':
