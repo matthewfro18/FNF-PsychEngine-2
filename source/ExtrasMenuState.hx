@@ -40,6 +40,8 @@ class ExtrasMenuState extends MusicBeatState
 	var bgMenu:FlxBackdrop;
 	var camFollow:FlxObject;
 
+	var i:Int = null;
+
 	override function create()
 	{
 		#if MODS_ALLOWED
@@ -86,6 +88,11 @@ class ExtrasMenuState extends MusicBeatState
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
+
+		var scale:Float = 1;
+		/*if(optionShit.length > 6) {
+			scale = 6 / optionShit.length;
+		}*/
 
 		for (num => option in optionShit)
 		{
