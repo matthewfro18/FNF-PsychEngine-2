@@ -16,6 +16,8 @@ import lime.utils.Assets;
 import states.FreeplayState.SongMetadata;
 import states.MainMenuState;
 import objects.HealthIcon;
+import backend.Highscore;
+import backend.Song;
 import backend.Controls;
 #if desktop
 import Discord.DiscordClient;
