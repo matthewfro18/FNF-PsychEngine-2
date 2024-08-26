@@ -82,19 +82,20 @@ class PlayMenuState extends MusicBeatState
 
 		for (i in 0...optionShit.length)
 		{
-			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
-			var menuItem = new FlxSprite().loadGraphic(Paths.image('mainmenu/' + optionShit[i]));
-			menuItem.scale.x = scale;
-			menuItem.scale.y = scale;
-			menuItem.x = 237;
-			menuItem.y = i;
-			menuItem.ID = i;
-			menuItem.screenCenter(X);
-			menuItems.add(menuItem);
-			var scr:Float = (optionShit.length - 4) * 0.135;
-			if(optionShit.length < 6) scr = 0;
-			menuItem.scrollFactor.set(0, scr);
-			menuItem.updateHitbox();
+	        	var menuItem = new FlxSprite().loadGraphic(Paths.image('mainmenu/$name');
+	        	menuItem.scale.x = scale;
+	        	menuItem.scale.y = scale;
+	        	menuItem.screenCenter(X);
+	        	menuItems.add(menuItem);
+	        	var scr:Float = (optionShit.length - 4) * 0.135;
+	        	if(optionShit.length < 6) scr = 0;
+	        	menuItem.scrollFactor.set(0, scr);
+	        	menuItem.updateHitbox();
+	        	
+	        	menuItem.antialiasing = ClientPrefs.data.antialiasing;
+	        	menuItem.scrollFactor.set();
+	        	menuItems.add(menuItem);
+	        	return menuItem;
 		}
 
 		var psychVer:FlxText = new FlxText(12, FlxG.height - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
