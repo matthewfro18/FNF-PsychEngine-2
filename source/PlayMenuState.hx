@@ -126,7 +126,7 @@ class PlayMenuState extends MusicBeatState
 
 	function createMenuItem(name:String, x:Float, y:Float):FlxSprite
 	{
-		var menuItem = new FlxSprite().loadGraphic(Paths.image('mainmenu/$name');
+		var menuItem = new FlxSprite().loadGraphic(Paths.image('mainmenu/$name'));
 		menuItem.scale.x = scale;
 		menuItem.scale.y = scale;
 		menuItem.screenCenter(X);
