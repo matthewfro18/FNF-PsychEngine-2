@@ -35,6 +35,7 @@ class PlayMenuState extends MusicBeatState
 	var rightOption:String = 'options';
 
 	var magenta:FlxSprite;
+	var bgMenu:FlxBackdrop;
 	var camFollow:FlxObject;
 
 	override function create()
