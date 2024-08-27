@@ -6,6 +6,7 @@ echo Installing dependencies...
 echo This might take a few moments depending on your internet speed.
 haxelib install lime 8.0.0
 haxelib install openfl 9.3.3
+haxelib install flixel 5.6.1
 haxelib install flixel 4.11.0
 haxelib install flixel-addons 2.9.0
 haxelib install flixel-tools 1.5.1
