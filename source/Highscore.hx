@@ -1,21 +1,10 @@
 package;
 
-import flixel.FlxG;
-
-using StringTools;
-
 class Highscore
 {
-	#if (haxe >= "4.0.0")
-	public static var weekScores:Map<String, Int> = new Map();
-	public static var songScores:Map<String, Int> = new Map();
-	public static var songRating:Map<String, Float> = new Map();
-	#else
 	public static var weekScores:Map<String, Int> = new Map();
 	public static var songScores:Map<String, Int> = new Map<String, Int>();
 	public static var songRating:Map<String, Float> = new Map<String, Float>();
-	#end
-
 
 	public static function resetSong(song:String, diff:Int = 0):Void
 	{
@@ -30,33 +19,21 @@ class Highscore
 		setWeekScore(daWeek, 0);
 	}
 
-	public static function floorDecimal(value:Float, decimals:Int):Float
-	{
-		if(decimals < 1)
-		{
-			return Math.floor(value);
-		}
-
-		var tempMult:Float = 1;
-		for (i in 0...decimals)
-		{
-			tempMult *= 10;
-		}
-		var newValue:Float = Math.floor(value * tempMult);
-		return newValue / tempMult;
-	}
-
 	public static function saveScore(song:String, score:Int = 0, ?diff:Int = 0, ?rating:Float = -1):Void
 	{
+		if(song == null) return;
 		var daSong:String = formatSong(song, diff);
 
-		if (songScores.exists(daSong)) {
-			if (songScores.get(daSong) < score) {
+		if (songScores.exists(daSong))
+		{
+			if (songScores.get(daSong) < score)
+			{
 				setScore(daSong, score);
 				if(rating >= 0) setRating(daSong, rating);
 			}
 		}
-		else {
+		else
+		{
 			setScore(daSong, score);
 			if(rating >= 0) setRating(daSong, rating);
 		}
@@ -71,8 +48,7 @@ class Highscore
 			if (weekScores.get(daWeek) < score)
 				setWeekScore(daWeek, score);
 		}
-		else
-			setWeekScore(daWeek, score);
+		else setWeekScore(daWeek, score);
 	}
 
 	/**
@@ -103,7 +79,7 @@ class Highscore
 
 	public static function formatSong(song:String, diff:Int):String
 	{
-		return Paths.formatToSongPath(song) + CoolUtil.getDifficultyFilePath(diff);
+		return Paths.formatToSongPath(song) + Difficulty.getFilePath(diff);
 	}
 
 	public static function getScore(song:String, diff:Int):Int
@@ -136,16 +112,12 @@ class Highscore
 	public static function load():Void
 	{
 		if (FlxG.save.data.weekScores != null)
-		{
 			weekScores = FlxG.save.data.weekScores;
-		}
+
 		if (FlxG.save.data.songScores != null)
-		{
 			songScores = FlxG.save.data.songScores;
-		}
+
 		if (FlxG.save.data.songRating != null)
-		{
 			songRating = FlxG.save.data.songRating;
-		}
 	}
 }
