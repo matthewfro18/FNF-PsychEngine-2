@@ -40,6 +40,8 @@ class PlayMenuState extends MusicBeatState
 
 	var i:Int = null;
 
+	var scale:Float = 1;
+
 	override function create()
 	{
 		#if MODS_ALLOWED
@@ -86,7 +88,6 @@ class PlayMenuState extends MusicBeatState
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
-		var scale:Float = 1;
 		/*if(optionShit.length > 6) {
 			scale = 6 / optionShit.length;
 		}*/
