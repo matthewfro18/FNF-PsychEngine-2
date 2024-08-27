@@ -122,12 +122,13 @@ class ExtrendedFreeplayState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
-        super.update(p);
 
-        if (controls.UP_P)
+	super.update(p);
+
+	if (controls.UI_UP)
             changeSelection(-1);
 
-        if (controls.DOWN_P)
+        if (controls.UI_DOWN)
             changeSelection(1);
 
         if (controls.BACK)
