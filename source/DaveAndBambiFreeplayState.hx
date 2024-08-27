@@ -14,11 +14,6 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxStringUtil;
 import lime.utils.Assets;
 import states.FreeplayState.SongMetadata;
-import states.MainMenuState;
-import objects.HealthIcon;
-import backend.Highscore;
-import backend.Song;
-import backend.Controls;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -125,16 +120,16 @@ class DaveAndBambiFreeplayState extends MusicBeatState
 
         super.update(p);
 
-        if (Controls.UP_P)
+        if (controls.UP_P)
             changeSelection(-1);
 
-        if (Controls.DOWN_P)
+        if (controls.DOWN_P)
             changeSelection(1);
 
-        if (Controls.BACK)
+        if (controls.BACK)
             FlxG.switchState(new MainMenuState());
 
-        if (Controls.ACCEPT)
+        if (controls.ACCEPT)
 		{
             switch (songs[curSelected].songName.toLowerCase()) {
                 case 'unknown':
