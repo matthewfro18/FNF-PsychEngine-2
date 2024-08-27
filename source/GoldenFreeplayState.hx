@@ -118,10 +118,10 @@ class GoldenFreeplayState extends MusicBeatState
 
         super.update(p);
 
-        if (controls.UP_P)
+	if (controls.UI_UP)
             changeSelection(-1);
 
-        if (controls.DOWN_P)
+        if (controls.UI_DOWN)
             changeSelection(1);
 
         if (controls.BACK)
