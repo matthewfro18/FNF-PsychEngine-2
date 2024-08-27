@@ -14,6 +14,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxStringUtil;
 import lime.utils.Assets;
 import states.FreeplayState.SongMetadata;
+import states.MainMenuState;
 #if desktop
 import Discord.DiscordClient;
 #end
