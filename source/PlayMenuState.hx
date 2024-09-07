@@ -5,6 +5,7 @@ import flixel.effects.FlxFlicker;
 import flixel.addons.display.FlxBackdrop;
 import lime.app.Application;
 import states.editors.MasterEditorMenu;
+import states.FreeplayState;
 import options.OptionsState;
 
 enum PlayMenuColumn {
