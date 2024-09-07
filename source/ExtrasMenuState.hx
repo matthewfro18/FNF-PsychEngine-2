@@ -7,6 +7,7 @@ import lime.app.Application;
 import states.editors.MasterEditorMenu;
 import states.ModsMenuState;
 import states.MainMenuState;
+import states.CreditsState;
 import options.OptionsState;
 
 enum ExtrasMenuColumn {
