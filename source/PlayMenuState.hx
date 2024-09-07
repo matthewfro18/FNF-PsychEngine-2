@@ -306,13 +306,13 @@ class PlayMenuState extends MusicBeatState
 						switch (option)
 						{
 							case 'extrended_universe':
-								MusicBeatState.switchState(new ExtrendedFreeplayState());
+								MusicBeatState.switchState(new FreeplayState());
 						    case 'golden':
-								MusicBeatState.switchState(new GoldenFreeplayState());
+								MusicBeatState.switchState(new FreeplayState());
 							case 'dave_and_bambi':
-								MusicBeatState.switchState(new DaveAndBambiFreeplayState());
+								MusicBeatState.switchState(new FreeplayState());
 							case 'secret':
-								MusicBeatState.switchState(new SecretFreeplayState());	
+								MusicBeatState.switchState(new FreeplayState());	
 						}
 					});
 					
