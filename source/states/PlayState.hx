@@ -125,6 +125,10 @@ class PlayState extends MusicBeatState
 
 	public static var SONG:SwagSong = null;
 	public static var isStoryMode:Bool = false;
+	public static var isUniverse:Bool = false;
+	public static var isGolden:Bool = false;
+	public static var isDaveAndBambi:Bool = false;
+	public static var isSecret:Bool = false;
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
@@ -306,6 +310,14 @@ class PlayState extends MusicBeatState
 
 		if (isStoryMode)
 			detailsText = "Story Mode: " + WeekData.getCurrentWeek().weekName;
+		if (isUniverse)
+			detailsText = "Freeplay";
+		if (isGolden)
+			detailsText = "Freeplay";
+		if (isDaveAndBambi)
+			detailsText = "Freeplay";
+		if (isSecret)
+			detailsText = "Freeplay";
 		else
 			detailsText = "Freeplay";
 
