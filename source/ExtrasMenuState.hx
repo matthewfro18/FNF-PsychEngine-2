@@ -7,7 +7,7 @@ import lime.app.Application;
 import states.editors.MasterEditorMenu;
 import states.ModsMenuState;
 import states.MainMenuState;
-import states.CreditsState;
+import states.CreditsState ;
 import options.OptionsState;
 
 enum ExtrasMenuColumn {
@@ -330,7 +330,7 @@ class ExtrasMenuState extends MusicBeatState
 								MusicBeatState.switchState(new ModsMenuState());
 							#end
 							case 'credits':
-								MusicBeatState.switchState(new CreditsState());
+								MusicBeatState.switchState(new CreditsState ());
 							case 'options':
 								MusicBeatState.switchState(new OptionsState());
 								OptionsState.onPlayState = false;
