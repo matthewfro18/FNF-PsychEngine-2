@@ -1,6 +1,5 @@
 package backend;
 
-import lime.utils.Assets;
 import openfl.utils.Assets as OpenFlAssets;
 import haxe.Json;
 
@@ -93,13 +92,13 @@ class WeekData {
 			   if(PlayState.isGolden)
 			        var fileToCheck:String = directories[j] + 'universe-weeks/Golden/' + sexList[i] + '.json';
 			   if(PlayState.isDaveAndBambi)
-			        var fileToCheck:String = directories[j] + 'universe-weeks/DaveAndBambi/' + sexList[i] + '.json';
+				var fileToCheck:String = directories[j] + 'universe-weeks/DaveAndBambi/' + sexList[i] + '.json';
 			   if(PlayState.isSecret)
-			        var fileToCheck:String = directories[j] + 'universe-weeks/Secret/' + sexList[i] + '.json';
+				var fileToCheck:String = directories[j] + 'universe-weeks/Secret/' + sexList[i] + '.json';
 			   else
 				var fileToCheck:String = directories[j] + 'weeks/' + sexList[i] + '.json';
 				if(!weeksLoaded.exists(sexList[i])) {
-                                        var fileToCheck:String;
+				        var fileToCheck:String;
 					var week:WeekFile = getWeekFile(fileToCheck);
 					if(week != null) {
 						var weekFile:WeekData = new WeekData(week, sexList[i]);
@@ -177,7 +176,7 @@ class WeekData {
 		}
 		#else
 		if(OpenFlAssets.exists(path)) {
-			rawJson = Assets.getText(path);
+			rawJson = OpenFlAssets.getText(path);
 		}
 		#end
 
